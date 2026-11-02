@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CRM Warmindo Adzkiya — Prototipe Tahap 1</title>
+<style>
+:root{--bg:#f4f6fa;--sf:#fff;--tx:#1b2430;--mu:#5d6b7a;--bd:#d6dce5;--pr:#1f3864;--ac:#2f6fdf;--ok:#1e8449;--wr:#b9770e;--er:#c0392b;--hl:#fff8dc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151c;--sf:#19212b;--tx:#e8edf3;--mu:#9aa7b5;--bd:#2c3744;--pr:#9db9ee;--ac:#6ea0ff;--ok:#52c27f;--wr:#e0a64a;--er:#ef7b6e;--hl:#3a3418;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10151c;--sf:#19212b;--tx:#e8edf3;--mu:#9aa7b5;--bd:#2c3744;--pr:#9db9ee;--ac:#6ea0ff;--ok:#52c27f;--wr:#e0a64a;--er:#ef7b6e;--hl:#3a3418;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--pr);color:#fff;padding:14px 16px}header h1{margin:0;font-size:17px}header p{margin:2px 0 0;font-size:12px;opacity:.85}
+:root[data-theme="dark"] header,:root:not([data-theme="light"]) header{color:#10151c}
+nav{display:flex;gap:4px;padding:8px 12px 0;overflow-x:auto;border-bottom:1px solid var(--bd);background:var(--sf)}
+nav button{border:0;background:none;color:var(--mu);padding:9px 12px;font:inherit;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+nav button.on{color:var(--pr);border-color:var(--ac);font-weight:600}nav button:disabled{opacity:.45;cursor:not-allowed}
+main{max-width:1100px;margin:0 auto;padding:14px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;align-items:center}
+input,select,textarea,button{font:inherit;color:var(--tx)}
+input,select,textarea{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:7px 9px;min-width:0}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:8px 13px;cursor:pointer}.btn.g{background:var(--sf);color:var(--tx);border:1px solid var(--bd)}.btn.s{padding:4px 8px;font-size:12px}
+.tw{overflow-x:auto;background:var(--sf);border:1px solid var(--bd);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:720px}th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--bd);vertical-align:top}
+th{font-size:12px;color:var(--mu);text-transform:uppercase;letter-spacing:.03em}tr.new td{background:var(--hl)}
+.tag{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;border:1px solid var(--bd)}
+.ok{color:var(--ok)}.wr{color:var(--wr)}.er{color:var(--er)}.mu{color:var(--mu);font-size:12px}
+.chips{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}.chip{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:6px 12px}.chip b{font-size:18px;display:block}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:12px;margin-bottom:10px}
+dialog{border:1px solid var(--bd);border-radius:12px;background:var(--sf);color:var(--tx);width:min(420px,92vw)}dialog label{display:block;margin:8px 0 2px;font-size:12px;color:var(--mu)}dialog input,dialog select{width:100%}
+</style></head><body>
+<header><h1>CRM Warmindo Adzkiya — Prototipe Tahap 1 (P11)</h1><p>Strategi SWOT → fitur: WO1 Data Pelanggan &amp; Pesanan, WT1 Masukan &amp; Keluhan. Semua data adalah data samaran (asumsi).</p></header>
+<nav id="nav"></nav><main id="app"></main>
+<dialog id="dlg"><form method="dialog" id="frm"></form></dialog>
+<script>
+const KEY='adz_p11_v1',$=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MENU=[['Indomie telor kornet',12000],['Magelangan',13000],['Nasi telur',8000],['Paket VIP (nasi telur + minum)',10000]];
+const KANAL=['Dine-in','WhatsApp','Google Maps','Instagram'],SEG=['Mahasiswa','Warga sekitar','Pesanan besar'],LAB=['Pelanggan','Pemesanan','Masukan','Pelanggan Tetap'];
+const KAT=['Waktu tunggu','Bahan habis','Kebersihan','Tempat/fasilitas','Lainnya'],PIC=['Admin','Pemilik','Koki'];
+const rp=n=>'Rp'+Number(n).toLocaleString('id-ID');
+const pad=n=>String(n).padStart(2,'0');
+const nowS=()=>{const d=new Date();return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`};
+let D,tab='c',newId=null;
+function seed(){
+  const N=['Dimas','Raka','Nadia','Ayu','Bagas','Fikri','Salsa','Rizal','Putri','Andi','Tegar','Maya','Wahyu','Dewi','Hafiz','Citra','Yoga','Laras','Fajar','Intan'];
+  const K=['Dine-in','WhatsApp','Google Maps','Dine-in','WhatsApp'];
+  const c=N.map((n,i)=>({id:'P'+pad(i+1),nama:n,wa:'62812****'+String(100+i*7).padStart(4,'0'),kanal:K[i%5],seg:i%5==4?'Pesanan besar':i%4==3?'Warga sekitar':'Mahasiswa',label:i%3==0?'Pelanggan Tetap':i%5==4?'Pemesanan':'Pelanggan',optin:i%4!=3,tgl:'2026-09-'+pad(i+1)}));
+  const o=[];let k=1;
+  c.forEach((p,i)=>{for(let j=0;j<i%3+1;j++){const m=MENU[(i+j)%4];o.push({id:'O'+pad(k++),pid:p.id,tgl:`2026-10-${pad(1+(i*3+j*9)%28)} 19:${pad(10+i)}`,saluran:j%2?'WhatsApp':'Dine-in',menu:m[0],nominal:m[1]*(p.seg=='Pesanan besar'?10:1)})}});
+  const m=[
+    {id:'M01',pid:'P02',kanal:'WhatsApp',kat:'Waktu tunggu',isi:'Pesanan datang sekitar 40 menit saat ramai.',pic:'Admin',status:'Selesai',masuk:'2026-10-12 20:05',resp:'2026-10-12 20:20'},
+    {id:'M02',pid:'P04',kanal:'Google Maps',kat:'Bahan habis',isi:'Telur habis jam 21.00.',pic:'Pemilik',status:'Diproses',masuk:'2026-10-15 21:10',resp:'2026-10-15 21:40'},
+    {id:'M03',pid:'P07',kanal:'Dine-in',kat:'Kebersihan',isi:'Menanyakan kebersihan alat masak.',pic:'Koki',status:'Selesai',masuk:'2026-10-18 19:30',resp:'2026-10-18 19:35'},
+    {id:'M04',pid:'P09',kanal:'WhatsApp',kat:'Tempat/fasilitas',isi:'Tempat duduk penuh dan panas.',pic:'Admin',status:'Baru',masuk:'2026-10-20 20:00',resp:''}];
+  return{c,o,m}
+}
+function load(){try{const s=localStorage.getItem(KEY);D=s?JSON.parse(s):seed()}catch(e){D=seed()}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}}
+const nm=id=>{const p=D.c.find(x=>x.id==id);return p?`${esc(p.nama)} <span class="mu">${esc(p.wa)}</span>`:'<span class="mu">Tanpa data</span>'};
+const last=id=>{const l=D.o.filter(x=>x.pid==id).map(x=>x.tgl).sort().pop();return l?l.slice(0,10):'—'};
+const nid=(a,p)=>p+pad(Math.max(0,...a.map(x=>+x.id.slice(1)))+1);
+function nav(){const t=[['c','Pelanggan'],['o','Pesanan'],['m','Masukan & Keluhan'],['d','Dashboard (P12)'],['s','Sapa Hangat (P12)']];
+  $('#nav').innerHTML=t.map(([k,l])=>`<button class="${tab==k?'on':''}" ${k=='d'||k=='s'?'disabled title="Dikerjakan di P12"':''} data-t="${k}">${l}</button>`).join('');
+  $('#nav').onclick=e=>{const b=e.target.closest('button[data-t]');if(b&&!b.disabled){tab=b.dataset.t;newId=null;draw()}}}
+function draw(){nav();({c:vC,o:vO,m:vM})[tab]()}
+/* PELANGGAN */
+function vC(){const q=(window._q||'').toLowerCase(),fl=window._fl||'',fk=window._fk||'';
+  const rows=D.c.filter(p=>(!q||(p.nama+p.wa).toLowerCase().includes(q))&&(!fl||p.label==fl)&&(!fk||p.kanal==fk));
+  $('#app').innerHTML=`<div class="bar"><input id="q" placeholder="Cari nama / No WA" value="${esc(window._q||'')}"><select id="fl"><option value="">Semua label</option>${LAB.map(l=>`<option ${fl==l?'selected':''}>${l}</option>`).join('')}</select><select id="fk"><option value="">Semua kanal</option>${KANAL.map(l=>`<option ${fk==l?'selected':''}>${l}</option>`).join('')}</select><button class="btn" id="add">+ Tambah pelanggan</button><button class="btn g" id="csv">Unduh CSV</button><button class="btn g" id="rst">Reset data demo</button></div>
+  <p class="mu">${rows.length} dari ${D.c.length} data (samaran, asumsi). Kolom sama dengan sheet “Data Pelanggan” (UTS 3a).</p>
+  <div class="tw"><table><tr><th>ID</th><th>Nama</th><th>No WA</th><th>Kanal</th><th>Segmen</th><th>Label</th><th>Opt-in</th><th>Pesanan terakhir</th><th></th></tr>${rows.map(p=>`<tr class="${p.id==newId?'new':''}"><td>${p.id}</td><td>${esc(p.nama)}</td><td>${esc(p.wa)}</td><td>${p.kanal}</td><td>${p.seg}</td><td><span class="tag">${p.label}</span></td><td>${p.optin?'Ya':'Tidak'}</td><td>${last(p.id)}</td><td><button class="btn g s" data-e="${p.id}">Ubah</button> <button class="btn g s" data-x="${p.id}">Hapus</button></td></tr>`).join('')||'<tr><td colspan="9" class="mu">Tidak ada data.</td></tr>'}</table></div>`;
+  $('#q').oninput=e=>{window._q=e.target.value;vC();const i=$('#q');i.focus();i.setSelectionRange(99,99)};$('#fl').onchange=e=>{window._fl=e.target.value;vC()};$('#fk').onchange=e=>{window._fk=e.target.value;vC()};
+  $('#add').onclick=()=>fC();$('#csv').onclick=csv;$('#rst').onclick=()=>{if(confirm('Kembalikan ke data demo awal?')){D=seed();save();draw()}};
+  document.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>fC(b.dataset.e));
+  document.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{if(confirm('Hapus pelanggan ini?')){D.c=D.c.filter(p=>p.id!=b.dataset.x);save();vC()}})}
+const opt=(a,v)=>a.map(x=>`<option ${x==v?'selected':''}>${x}</option>`).join('');
+function fC(id){const p=D.c.find(x=>x.id==id)||{nama:'',wa:'62812****',kanal:'WhatsApp',seg:'Mahasiswa',label:'Pelanggan',optin:true};
+  $('#frm').innerHTML=`<h3>${id?'Ubah':'Tambah'} pelanggan</h3><label>Nama panggilan</label><input name="nama" required value="${esc(p.nama)}"><label>No WA (disamarkan)</label><input name="wa" required value="${esc(p.wa)}"><label>Asal kanal</label><select name="kanal">${opt(KANAL,p.kanal)}</select><label>Segmen</label><select name="seg">${opt(SEG,p.seg)}</select><label>Label WA Business</label><select name="label">${opt(LAB,p.label)}</select><label><input type="checkbox" name="optin" style="width:auto" ${p.optin?'checked':''}> Setuju menerima promo (opt-in)</label><div class="bar" style="margin-top:12px"><button class="btn" value="ok">Simpan</button><button class="btn g" value="cancel" formnovalidate>Batal</button></div>`;
+  $('#dlg').showModal();$('#frm').onsubmit=e=>{if(e.submitter.value!='ok')return;const f=new FormData($('#frm')),r={nama:f.get('nama').trim(),wa:f.get('wa').trim(),kanal:f.get('kanal'),seg:f.get('seg'),label:f.get('label'),optin:!!f.get('optin')};
+    if(id)Object.assign(p,r);else{const n={id:nid(D.c,'P'),tgl:nowS().slice(0,10),...r};D.c.push(n);newId=n.id}save();setTimeout(vC,0)}}
+function csv(){const h=['id','nama','no_wa','asal_kanal','segmen','label','opt_in','tgl_daftar'];const L=[h.join(',')].concat(D.c.map(p=>[p.id,p.nama,p.wa,p.kanal,p.seg,p.label,p.optin?'ya':'tidak',p.tgl].map(v=>`"${v}"`).join(',')));
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([L.join('\n')],{type:'text/csv'}));a.download='data_pelanggan_samaran.csv';a.click()}
+/* PESANAN */
+function vO(){const rows=[...D.o].sort((a,b)=>b.tgl.localeCompare(a.tgl));
+  $('#app').innerHTML=`<div class="card"><b>Catat pesanan</b><div class="bar" style="margin-top:8px"><select id="op">${D.c.map(p=>`<option value="${p.id}">${esc(p.nama)} — ${esc(p.wa)}</option>`).join('')}</select><select id="os">${opt(['Dine-in','WhatsApp','Pesan antar','Pesanan besar'],'Dine-in')}</select><select id="om">${MENU.map(m=>`<option value="${m[1]}">${m[0]}</option>`).join('')}</select><input id="on" type="number" min="0" step="500" style="width:110px"><button class="btn" id="oa">Simpan pesanan</button></div><span class="mu">Harga menu adalah asumsi. Nominal terisi otomatis dan dapat diubah.</span></div>
+  <div class="tw"><table><tr><th>ID</th><th>Waktu</th><th>Pelanggan</th><th>Saluran</th><th>Menu</th><th>Nominal</th></tr>${rows.slice(0,40).map(o=>`<tr class="${o.id==newId?'new':''}"><td>${o.id}</td><td>${o.tgl}</td><td>${nm(o.pid)}</td><td>${o.saluran}</td><td>${esc(o.menu)}</td><td>${rp(o.nominal)}</td></tr>`).join('')}</table></div><p class="mu">Menampilkan 40 pesanan terbaru dari ${D.o.length}. Riwayat ini dipakai fitur Sapa Hangat (P12) untuk mencari pelanggan yang lama tidak memesan.</p>`;
+  const sy=()=>$('#on').value=$('#om').value;sy();$('#om').onchange=sy;
+  $('#oa').onclick=()=>{const m=$('#om');const o={id:nid(D.o,'O'),pid:$('#op').value,tgl:nowS(),saluran:$('#os').value,menu:m.options[m.selectedIndex].text,nominal:+$('#on').value};D.o.push(o);newId=o.id;save();vO()}}
+/* MASUKAN */
+function vM(){const cnt=s=>D.m.filter(x=>x.status==s).length;
+  $('#app').innerHTML=`<div class="chips"><div class="chip"><b>${cnt('Baru')}</b>Baru</div><div class="chip"><b>${cnt('Diproses')}</b>Diproses</div><div class="chip"><b>${cnt('Selesai')}</b>Selesai</div></div>
+  <div class="card"><b>Catat masukan / keluhan</b><div class="bar" style="margin-top:8px"><select id="mp"><option value="">Tanpa data pelanggan</option>${D.c.map(p=>`<option value="${p.id}">${esc(p.nama)} — ${esc(p.wa)}</option>`).join('')}</select><select id="mk">${opt(['WhatsApp','Dine-in','Google Maps','Instagram'])}</select><select id="mt">${opt(KAT)}</select><select id="mc">${opt(PIC)}</select></div><div class="bar"><input id="mi" placeholder="Isi masukan / keluhan" style="flex:1"><button class="btn" id="ma">Simpan</button></div><span class="mu">Target SLA: keluhan publik direspons ≤ 1 jam (P9 9.3). Status diubah sampai Selesai.</span></div>
+  <div class="tw"><table><tr><th>ID</th><th>Masuk</th><th>Pelanggan</th><th>Kanal / Kategori</th><th>Isi</th><th>PIC</th><th>Status</th><th>SLA respons ≤ 1 jam</th></tr>${[...D.m].reverse().map(m=>{const d=new Date(m.masuk.replace(' ','T')),lim=d.getTime()+3600000,r=m.resp?new Date(m.resp.replace(' ','T')).getTime():0;
+    const sla=r?(r<=lim?'<span class="ok">Tepat waktu</span>':'<span class="er">Terlambat</span>'):(Date.now()>lim?'<span class="er">Belum direspons (lewat)</span>':'<span class="wr">Menunggu</span>');
+    return`<tr class="${m.id==newId?'new':''}"><td>${m.id}</td><td>${m.masuk}</td><td>${nm(m.pid)}</td><td>${m.kanal}<br><span class="mu">${m.kat}</span></td><td>${esc(m.isi)}</td><td>${m.pic}</td><td><select data-s="${m.id}">${opt(['Baru','Diproses','Selesai'],m.status)}</select></td><td>${sla}${m.resp?`<br><span class="mu">${m.resp}</span>`:`<br><button class="btn g s" data-r="${m.id}">Tandai direspons</button>`}</td></tr>`}).join('')}</table></div>`;
+  $('#ma').onclick=()=>{const t=$('#mi').value.trim();if(!t){$('#mi').focus();return}const m={id:nid(D.m,'M'),pid:$('#mp').value,kanal:$('#mk').value,kat:$('#mt').value,isi:t,pic:$('#mc').value,status:'Baru',masuk:nowS(),resp:''};D.m.push(m);newId=m.id;save();vM()};
+  document.querySelectorAll('[data-s]').forEach(s=>s.onchange=()=>{D.m.find(x=>x.id==s.dataset.s).status=s.value;save();vM()});
+  document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{D.m.find(x=>x.id==b.dataset.r).resp=nowS();save();vM()})}
+load();draw();
+</script></body></html>
