@@ -1,0 +1,17 @@
+/* ==========================================================================
+   CRM Warmindo Adzkiya — Atelier Modular Stylesheet
+   Crafted Minimalist UI · High Contrast · Zero Monolith
+   ========================================================================== */
+
+@import './modules/variables.css';
+@import './modules/base.css';
+@import './modules/header.css';
+@import './modules/navigation.css';
+@import './modules/buttons.css';
+@import './modules/forms.css';
+@import './modules/tables.css';
+@import './modules/kpi.css';
+@import './modules/kitchen.css';
+@import './modules/buyer.css';
+@import './modules/sapa.css';
+@import './modules/modals.css';

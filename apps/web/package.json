@@ -1,0 +1,9 @@
+{
+  "name": "@adzkiya/web",
+  "version": "1.0.0",
+  "description": "Frontend UI Client CRM Warmindo Adzkiya",
+  "scripts": {
+    "dev": "echo [Web] Frontend aktif dan dilayani langsung oleh Spring Boot di http://localhost:8080",
+    "build": "echo [Web] Static assets ready in apps/web"
+  }
+}

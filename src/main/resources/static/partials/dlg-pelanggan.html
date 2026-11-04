@@ -1,0 +1,76 @@
+<!-- MODAL 1: TAMBAH / UBAH PELANGGAN -->
+<dialog id="dlg-pelanggan">
+  <form method="dialog" id="form-pelanggan">
+    <div class="modal-header">
+      <h3 class="modal-title" id="dlg-pelanggan-title">Tambah Pelanggan Baru</h3>
+      <button type="button" class="btn g s" id="btn-close-pelanggan-dlg" aria-label="Tutup">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="ep-id">ID Pelanggan (Otomatis)</label>
+        <input type="text" id="ep-id" readonly style="background: var(--sf-subtle); font-family: var(--font-mono); font-weight: 700;">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ep-nama">Nama Lengkap *</label>
+          <input type="text" id="ep-nama" placeholder="Contoh: Dimas Wahyu" required autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="ep-wa">Nomor WhatsApp *</label>
+          <input type="text" id="ep-wa" placeholder="Contoh: 6281234567890" required autocomplete="off">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ep-kanal">Asal Kanal Masuk</label>
+          <select id="ep-kanal">
+            <option value="Dine-in">Dine-in (Makan di Tempat)</option>
+            <option value="WhatsApp">WhatsApp</option>
+            <option value="Google Maps">Google Maps</option>
+            <option value="Instagram">Instagram</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ep-seg">Segmen Pelanggan</label>
+          <select id="ep-seg">
+            <option value="Mahasiswa">Mahasiswa</option>
+            <option value="Warga sekitar">Warga sekitar</option>
+            <option value="Pesanan besar">Pesanan besar</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ep-lab">Label WhatsApp Business</label>
+          <select id="ep-lab">
+            <option value="Pelanggan Tetap">Pelanggan Tetap</option>
+            <option value="Pelanggan">Pelanggan</option>
+            <option value="Pemesanan">Pemesanan</option>
+            <option value="Masukan">Masukan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ep-opt">Persetujuan Promosi (Opt-In)</label>
+          <select id="ep-opt">
+            <option value="true">Ya, bersedia dihubungi (Opt-in)</option>
+            <option value="false">Tidak (Dilarang broadcast)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn g" id="btn-cancel-pelanggan-dlg">Batal</button>
+      <button type="submit" class="btn" id="btn-submit-pelanggan">
+        <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Simpan Data Pelanggan
+      </button>
+    </div>
+  </form>
+</dialog>

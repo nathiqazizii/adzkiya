@@ -1,0 +1,106 @@
+/* Context Strip, Subheader, Module Nav Tabs & Main Container */
+.context-strip {
+  background: var(--sf-subtle);
+  border-top: 1px solid var(--bd);
+  border-bottom: 1px solid var(--bd);
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--mu);
+}
+
+.context-strip-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.context-strip-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.context-strip-tag.admin {
+  background: var(--blue-subtle);
+  color: var(--blue);
+  border: 1px solid var(--blue-bd);
+}
+.context-strip-tag.pemilik {
+  background: var(--amber-subtle);
+  color: var(--amber);
+  border: 1px solid var(--amber-bd);
+}
+.context-strip-tag.koki {
+  background: var(--green-subtle);
+  color: var(--green);
+  border: 1px solid var(--green-bd);
+}
+.context-strip-tag.pembeli {
+  background: var(--brand-subtle);
+  color: var(--brand);
+  border: 1px solid var(--brand-bd);
+}
+
+nav#nav {
+  display: flex;
+  gap: 2px;
+  padding: 0 24px;
+  background: var(--sf);
+  overflow-x: auto;
+}
+
+nav#nav button {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 16px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--mu);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+nav#nav button:hover {
+  color: var(--tx);
+}
+
+nav#nav button.active {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+  font-weight: 600;
+}
+
+main#app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+  animation: fadeIn 0.12s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0.7; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}

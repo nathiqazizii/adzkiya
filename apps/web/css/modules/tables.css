@@ -1,0 +1,51 @@
+/* Data Tables, Table Rows, Alignment & Numerical Font */
+.table-wrap {
+  background: var(--sf);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  text-align: left;
+}
+
+th {
+  background: var(--sf-subtle);
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--mu);
+  border-bottom: 1px solid var(--bd);
+  white-space: nowrap;
+}
+
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--bd);
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--sf-subtle);
+}
+
+tr.highlight {
+  background: var(--brand-subtle);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}

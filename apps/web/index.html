@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CRM Warmindo Adzkiya — Sistem Operasional, Dapur &amp; Pelanggan</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Top Command Header -->
+  <header>
+    <div class="header-top">
+      <div class="brand-wrap">
+        <div class="brand-mark" title="Warmindo Adzkiya">
+          <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
+        </div>
+        <div class="brand-text">
+          <h1>CRM Warmindo Adzkiya</h1>
+          <p>Sistem Operasional, Dapur &amp; Hubungan Pelanggan (Spring Boot + MySQL)</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="user-badge" id="user-badge" title="Pengguna aktif saat ini">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span id="user-display">Admin Adzkiya</span>
+          <span class="user-role-tag" id="user-role-tag">Admin</span>
+        </div>
+        <button type="button" class="btn g s" id="btn-switch-account" title="Ganti akun pengguna atau masuk dengan akun lain">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Ganti Akun
+        </button>
+        <button type="button" class="btn g s" id="btn-theme" title="Ubah Mode Gelap / Terang">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button type="button" class="btn g s" id="btn-logout" title="Keluar dari sistem">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Keluar
+        </button>
+      </div>
+    </div>
+
+    <div class="context-strip" id="context-strip">
+      <div class="context-strip-text">
+        <span class="context-strip-tag admin" id="context-tag">Akses Admin</span>
+        <span id="context-desc">Akses penuh ke data pelanggan UTS 3a, pesanan kasir, penanganan keluhan, analitik SLA, dan sapa hangat.</span>
+      </div>
+      <div id="context-quick-action">
+        <button type="button" class="btn g s" id="btn-role-quick-nav">Buka Modul Prioritas</button>
+      </div>
+    </div>
+
+    <nav id="nav">
+      <!-- Tabs populated dynamically based on role permissions -->
+    </nav>
+  </header>
+
+  <!-- Main View Container (Populated dynamically from modular partials) -->
+  <main id="app">
+    <div style="padding: 40px 20px; text-align: center; color: var(--mu);">Memuat antarmuka sistem CRM...</div>
+  </main>
+
+  <!-- Modal Dialogs Container (Loaded from modular partials) -->
+  <div id="dialogs-container"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- JavaScript Client Logic -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

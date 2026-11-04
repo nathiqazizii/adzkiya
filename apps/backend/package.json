@@ -1,0 +1,9 @@
+{
+  "name": "@adzkiya/backend",
+  "version": "1.0.0",
+  "description": "Java 17 Spring Boot & MySQL REST Service for CRM Warmindo Adzkiya",
+  "scripts": {
+    "dev": "cd ../.. && .\\mvnw.cmd spring-boot:run",
+    "build": "cd ../.. && .\\mvnw.cmd compile"
+  }
+}

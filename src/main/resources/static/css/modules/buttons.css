@@ -1,0 +1,119 @@
+/* Buttons, Badges, Tags & Status Dots */
+.btn {
+  appearance: none;
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  color: #FFFFFF;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn:hover {
+  background: var(--brand-hover);
+  border-color: var(--brand-hover);
+  color: #FFFFFF;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--bd-focus);
+  outline-offset: 1px;
+}
+
+.btn.g {
+  background: var(--sf);
+  color: var(--tx);
+  border-color: var(--bd);
+}
+
+.btn.g:hover {
+  background: var(--sf-subtle);
+  border-color: var(--mu-light);
+  color: var(--tx);
+}
+
+.btn.s {
+  padding: 4px 9px;
+  font-size: 11.5px;
+}
+
+.btn.danger {
+  background: var(--red);
+  border-color: var(--red);
+  color: #FFFFFF;
+}
+
+.btn.danger:hover {
+  background: #96221D;
+  border-color: #96221D;
+}
+
+.btn.success {
+  background: var(--green);
+  border-color: var(--green);
+  color: #FFFFFF;
+}
+
+.btn.success:hover {
+  background: #165337;
+  border-color: #165337;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  font-size: 11.5px;
+  font-weight: 500;
+  background: var(--sf-subtle);
+  color: var(--mu);
+  border: 1px solid var(--bd);
+}
+
+.tag.primary {
+  background: var(--brand-subtle);
+  color: var(--brand);
+  border-color: var(--brand-bd);
+  font-weight: 600;
+}
+
+.tag.green {
+  background: var(--green-subtle);
+  color: var(--green);
+  border-color: var(--green-bd);
+  font-weight: 600;
+}
+
+.tag.amber {
+  background: var(--amber-subtle);
+  color: var(--amber);
+  border-color: var(--amber-bd);
+  font-weight: 600;
+}
+
+.tag.red {
+  background: var(--red-subtle);
+  color: var(--red);
+  border-color: var(--red-bd);
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+}

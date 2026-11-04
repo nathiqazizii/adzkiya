@@ -1,0 +1,129 @@
+/* Header, Brand, Role Switcher & User Status Controls */
+header {
+  background: var(--sf);
+  border-bottom: 1px solid var(--bd);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--brand);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-text h1 {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--tx);
+  line-height: 1.2;
+}
+
+.brand-text p {
+  font-size: 11.5px;
+  color: var(--mu);
+  margin-top: 1px;
+}
+
+.role-switcher-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sf-subtle);
+  padding: 3px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--bd);
+}
+
+.role-switcher-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--mu);
+  padding: 0 8px;
+}
+
+.role-pill {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--mu);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.role-pill:hover {
+  color: var(--tx);
+  background: var(--sf-sunken);
+}
+
+.role-pill.active {
+  background: var(--sf);
+  color: var(--brand);
+  font-weight: 600;
+  border-color: var(--bd);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: var(--sf-subtle);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--tx);
+}
+
+.user-role-tag {
+  background: var(--brand-subtle);
+  color: var(--brand);
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid var(--brand-bd);
+}

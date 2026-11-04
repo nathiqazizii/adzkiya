@@ -1,0 +1,64 @@
+<!-- MODAL 3: GANTI AKUN / LOGIN CEPAT -->
+<dialog id="dlg-switch-account">
+  <div class="modal-header">
+    <h3 class="modal-title">Ganti Akun Pengguna</h3>
+    <button type="button" class="btn g s" id="btn-close-switch-account" aria-label="Tutup">
+      <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="font-size: 12px; color: var(--mu); margin-bottom: 14px;">
+      Pilih akun pengguna yang ingin Anda gunakan untuk mengakses sistem CRM Warmindo Adzkiya:
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px;">
+      <button type="button" class="btn g" data-quick-user="admin" style="justify-content: flex-start; text-align: left; padding: 10px;">
+        <div>
+          <b style="display:block; font-size: 13px; color: var(--tx);">Admin Adzkiya</b>
+          <span style="font-size: 11px; color: var(--mu);">Role: Admin (Akses Penuh)</span>
+        </div>
+      </button>
+
+      <button type="button" class="btn g" data-quick-user="pemilik" style="justify-content: flex-start; text-align: left; padding: 10px;">
+        <div>
+          <b style="display:block; font-size: 13px; color: var(--tx);">Pemilik Warmindo</b>
+          <span style="font-size: 11px; color: var(--mu);">Role: Pemilik (Eksekutif/Omset)</span>
+        </div>
+      </button>
+
+      <button type="button" class="btn g" data-quick-user="koki" style="justify-content: flex-start; text-align: left; padding: 10px;">
+        <div>
+          <b style="display:block; font-size: 13px; color: var(--tx);">Koki Utama</b>
+          <span style="font-size: 11px; color: var(--mu);">Role: Koki (Kitchen Board KDS)</span>
+        </div>
+      </button>
+
+      <button type="button" class="btn g" data-quick-user="pembeli" style="justify-content: flex-start; text-align: left; padding: 10px;">
+        <div>
+          <b style="display:block; font-size: 13px; color: var(--tx);">Pelanggan Meja 03</b>
+          <span style="font-size: 11px; color: var(--mu);">Role: Pembeli (Pesan Mandiri)</span>
+        </div>
+      </button>
+    </div>
+
+    <div style="border-top: 1px dashed var(--bd); padding-top: 14px;">
+      <form id="form-login-switch">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sw-username">Username</label>
+            <input type="text" id="sw-username" placeholder="Masukkan username" required autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="sw-password">Password</label>
+            <input type="password" id="sw-password" placeholder="Masukkan password" required autocomplete="current-password">
+          </div>
+        </div>
+        <div id="sw-err" style="color: var(--red); font-size: 11.5px; margin-bottom: 10px; display: none;"></div>
+        <button type="submit" class="btn" style="width: 100%;">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          Masuk dengan Akun Ini
+        </button>
+      </form>
+    </div>
+  </div>
+</dialog>
