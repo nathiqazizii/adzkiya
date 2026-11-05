@@ -1,0 +1,19 @@
+{
+  "name": "web-bj",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo CRM Warmindo Adzkiya - Turborepo, Spring Boot, MySQL, HTML5 & CSS3",
+  "packageManager": "npm@11.17.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "clean": "turbo clean"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4"
+  }
+}

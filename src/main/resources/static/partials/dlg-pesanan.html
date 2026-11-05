@@ -1,0 +1,60 @@
+<!-- MODAL 2: CATAT PESANAN KASIR -->
+<dialog id="dlg-pesanan">
+  <form method="dialog" id="form-pesanan">
+    <div class="modal-header">
+      <h3 class="modal-title">Catat Pesanan Pelanggan Baru</h3>
+      <button type="button" class="btn g s" id="btn-close-pesanan-dlg" aria-label="Tutup">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="op">Pilih Pelanggan *</label>
+          <select id="op" required>
+            <!-- Populated via JS -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="os">Saluran Pemesanan</label>
+          <select id="os">
+            <option value="Dine-in">Dine-in (Di Tempat)</option>
+            <option value="WhatsApp">WhatsApp</option>
+            <option value="Pesan antar">Pesan antar</option>
+            <option value="Pesanan besar">Pesanan besar (Catering/Event)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="om">Menu Makanan *</label>
+          <select id="om">
+            <option value="Indomie telor kornet" data-price="12000">Indomie telor kornet (Rp12.000)</option>
+            <option value="Magelangan" data-price="13000">Magelangan Spesial (Rp13.000)</option>
+            <option value="Nasi telur" data-price="8000">Nasi Telur (Rp8.000)</option>
+            <option value="Paket VIP (nasi telur + minum)" data-price="10000">Paket VIP (Nasi Telur + Minum) (Rp10.000)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="oq">Jumlah Porsi</label>
+          <input type="number" id="oq" value="1" min="1" max="100">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="on">Total Nominal Pembayaran (Rp)</label>
+        <input type="number" id="on" value="12000" required>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn g" id="btn-cancel-pesanan-dlg">Batal</button>
+      <button type="submit" class="btn" id="btn-submit-pesanan">
+        <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Terbitkan Tiket Pesanan
+      </button>
+    </div>
+  </form>
+</dialog>

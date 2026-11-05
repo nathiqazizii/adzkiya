@@ -1,0 +1,8 @@
+{
+  "name": "@adzkiya/database",
+  "version": "1.0.0",
+  "description": "MySQL Database Schemas & Migrations for CRM Warmindo Adzkiya",
+  "scripts": {
+    "seed": "mysql -u root crm_adzkiya < crm_adzkiya.sql"
+  }
+}

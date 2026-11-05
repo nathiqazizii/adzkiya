@@ -1,0 +1,49 @@
+# =========================================================================
+# 1. Java / Maven Build Outputs
+# =========================================================================
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+crash.log
+
+# =========================================================================
+# 2. Node.js & Turborepo Monorepo
+# =========================================================================
+node_modules/
+.turbo/
+apps/*/.turbo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# =========================================================================
+# 3. IDE, Editor & OS Artifacts
+# =========================================================================
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.classpath
+.project
+.settings/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================================================================
+# 4. Local Temp & Backup Folders
+# =========================================================================
+_original_adzkiya/
+temp_skills/
+*.tmp
+*.bak

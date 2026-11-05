@@ -1,0 +1,142 @@
+<!-- TABS: PEMBELI PORTAL MANDIRI (MENU, STATUS MEJA, KOTAK MASUKAN) -->
+<section id="tab-buyer-order" class="tab-pane" aria-label="Buku Menu &amp; Pesan Meja">
+  <div class="panel-card" style="margin-bottom: 24px;">
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px;">
+      <div>
+        <h2 class="panel-title" style="font-size: 16px;">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Pesan Menu Hangat Meja Warmindo
+        </h2>
+        <p class="panel-desc">Pilih menu favorit Anda. Pesanan langsung masuk ke antrean Koki di dapur secara otomatis.</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <label for="buyer-table" style="font-size: 12px; font-weight: 600; color: var(--tx);">Posisi Duduk:</label>
+        <select id="buyer-table" style="font-weight: 600; border-color: var(--brand);">
+          <option value="Meja 01">Meja 01 (Depan Kasir)</option>
+          <option value="Meja 02">Meja 02 (Tengah)</option>
+          <option value="Meja 03" selected>Meja 03 (Dekat Jendela)</option>
+          <option value="Meja 04">Meja 04 (Lesehan Dalam)</option>
+          <option value="Meja 05">Meja 05 (Lesehan Luar)</option>
+          <option value="Meja 06">Meja 06 (Teras)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Visual Menu Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 20px;" id="buyer-menu-grid">
+      <div class="menu-select-card active" data-menu="Indomie telor kornet" data-price="12000" style="border: 1px solid var(--bd); padding: 14px; border-radius: var(--radius-sm); cursor: pointer; background: var(--sf); transition: all 0.15s ease;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+          <b style="font-size: 13.5px; color: var(--tx);">Indomie Telur Kornet</b>
+          <span class="tag primary">Terlaris</span>
+        </div>
+        <p style="font-size: 11.5px; color: var(--mu); margin-bottom: 10px;">Indomie goreng/kuah disajikan dengan kornet gurih dan telur setengah matang.</p>
+        <div style="font-size: 14px; font-weight: 700; color: var(--brand);">Rp12.000</div>
+      </div>
+
+      <div class="menu-select-card" data-menu="Magelangan" data-price="13000" style="border: 1px solid var(--bd); padding: 14px; border-radius: var(--radius-sm); cursor: pointer; background: var(--sf); transition: all 0.15s ease;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+          <b style="font-size: 13.5px; color: var(--tx);">Magelangan Spesial</b>
+          <span class="tag">Favorit</span>
+        </div>
+        <p style="font-size: 11.5px; color: var(--mu); margin-bottom: 10px;">Perpaduan nasi goreng dan mie kuning khas racikan Warmindo Adzkiya.</p>
+        <div style="font-size: 14px; font-weight: 700; color: var(--brand);">Rp13.000</div>
+      </div>
+
+      <div class="menu-select-card" data-menu="Nasi telur" data-price="8000" style="border: 1px solid var(--bd); padding: 14px; border-radius: var(--radius-sm); cursor: pointer; background: var(--sf); transition: all 0.15s ease;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+          <b style="font-size: 13.5px; color: var(--tx);">Nasi Telur Pontianak</b>
+          <span class="tag green">Hemat</span>
+        </div>
+        <p style="font-size: 11.5px; color: var(--mu); margin-bottom: 10px;">Nasi pulen hangat dengan telur ceplok krispi kecap asin bawang.</p>
+        <div style="font-size: 14px; font-weight: 700; color: var(--brand);">Rp8.000</div>
+      </div>
+
+      <div class="menu-select-card" data-menu="Paket VIP (nasi telur + minum)" data-price="10000" style="border: 1px solid var(--bd); padding: 14px; border-radius: var(--radius-sm); cursor: pointer; background: var(--sf); transition: all 0.15s ease;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+          <b style="font-size: 13.5px; color: var(--tx);">Paket VIP Lengkap</b>
+          <span class="tag amber">Paket</span>
+        </div>
+        <p style="font-size: 11.5px; color: var(--mu); margin-bottom: 10px;">Nasi telur lezat sudah termasuk Es Teh Kampul manis segar.</p>
+        <div style="font-size: 14px; font-weight: 700; color: var(--brand);">Rp10.000</div>
+      </div>
+    </div>
+
+    <input type="hidden" id="buyer-menu" value="Indomie telor kornet">
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="buyer-qty">Jumlah Porsi</label>
+        <input type="number" id="buyer-qty" value="1" min="1" max="20">
+      </div>
+      <div class="form-group">
+        <label for="buyer-notes">Catatan Khusus Koki (Opsional)</label>
+        <input type="text" id="buyer-notes" placeholder="Contoh: Kuah nyemek, pedas cabai 5, telur matang...">
+      </div>
+    </div>
+
+    <div style="background: var(--sf-subtle); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid var(--bd); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between;">
+      <div>
+        <span style="font-size: 12px; color: var(--mu); display: block;">Total Tagihan Meja:</span>
+        <b style="font-size: 13px; color: var(--tx);" id="buyer-order-summary-text">1x Indomie telor kornet</b>
+      </div>
+      <span style="font-size: 20px; font-weight: 700; color: var(--brand);" id="buyer-total-display">Rp12.000</span>
+    </div>
+
+    <button type="button" class="btn" id="btn-buyer-order" style="width: 100%; padding: 12px; font-size: 13.5px;">
+      <svg class="icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      Kirim Pesanan ke Dapur Koki Sekarang
+    </button>
+  </div>
+</section>
+
+<section id="tab-buyer-status" class="tab-pane" aria-label="Status Pesanan Meja Saya">
+  <div class="toolbar">
+    <div>
+      <h2 style="font-size: 15px; font-weight: 700; color: var(--tx); display: flex; align-items: center; gap: 8px;">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Status Pesanan Meja Anda
+      </h2>
+      <p style="font-size: 12px; color: var(--mu);">Pantau progres racikan pesanan Anda langsung dari dapur koki sampai tiba di meja.</p>
+    </div>
+    <div class="toolbar-group">
+      <button type="button" class="btn g" id="btn-refresh-buyer-status">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        Segarkan Status
+      </button>
+    </div>
+  </div>
+
+  <div id="buyer-status-container" style="display: grid; gap: 14px;">
+    <!-- Populated via JS -->
+  </div>
+</section>
+
+<section id="tab-buyer-feedback" class="tab-pane" aria-label="Kotak Masukan Meja">
+  <div class="panel-card" style="max-width: 600px; margin: 0 auto;">
+    <h2 class="panel-title">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Kotak Suara &amp; Masukan Pelanggan Meja
+    </h2>
+    <p class="panel-desc">Apakah rasa mie pas di lidah atau meja kurang bersih? Sampaikan langsung agar kami dapat memberikan yang terbaik.</p>
+    
+    <div class="form-group">
+      <label for="buyer-fb-kat">Kategori Masukan</label>
+      <select id="buyer-fb-kat">
+        <option value="Kualitas Rasa">Kualitas Rasa / Kematangan Masakan</option>
+        <option value="Waktu tunggu">Waktu Tunggu Makanan</option>
+        <option value="Kebersihan">Kebersihan Meja &amp; Alat Makan</option>
+        <option value="Tempat/fasilitas">Kenyamanan Tempat / Kipas / Colokan</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="buyer-fb-text">Saran atau Keluhan Anda *</label>
+      <textarea id="buyer-fb-text" rows="4" placeholder="Ceritakan pengalaman makan Anda di meja hari ini..."></textarea>
+    </div>
+
+    <button type="button" class="btn" id="btn-buyer-send-fb" style="width: 100%; padding: 11px;">
+      <svg class="icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      Kirim Masukan Langsung ke Tim Warung
+    </button>
+  </div>
+</section>

@@ -1,0 +1,103 @@
+<!-- TAB 1: DATA PELANGGAN (UTS 3a) -->
+<section id="tab-c" class="tab-pane active" aria-labelledby="nav-tab-c">
+  <!-- Summary KPIs for Customers -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <span>Total Pelanggan Terdaftar</span>
+        <svg class="icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      </div>
+      <div class="kpi-val" id="cust-kpi-total">20</div>
+      <div class="kpi-sub"><span class="kpi-badge ok">Aktif</span> Data tersimpan di MySQL database</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <span>Pelanggan Tetap</span>
+        <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="kpi-val" id="cust-kpi-tetap">7</div>
+      <div class="kpi-sub">Segmen loyal dengan frekuensi beli rutin</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <span>Opt-In Promo WhatsApp</span>
+        <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="kpi-val" id="cust-kpi-optin">15</div>
+      <div class="kpi-sub">75% pelanggan bersedia menerima pesan sapaan</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <span>Perlu Sapaan Ulang</span>
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+      </div>
+      <div class="kpi-val" id="cust-kpi-sapa">6</div>
+      <div class="kpi-sub"><span class="kpi-badge wr">Prioritas</span> Belum transaksi &gt; 14 hari</div>
+    </div>
+  </div>
+
+  <!-- Action & Filter Toolbar -->
+  <div class="toolbar">
+    <div class="toolbar-group">
+      <div class="search-input-wrap">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="q" placeholder="Cari nama atau No WhatsApp..." autocomplete="off">
+      </div>
+      <select id="fl" title="Filter berdasarkan label pelanggan">
+        <option value="">Semua label</option>
+        <option value="Pelanggan Tetap">Pelanggan Tetap</option>
+        <option value="Pelanggan">Pelanggan</option>
+        <option value="Pemesanan">Pemesanan</option>
+        <option value="Masukan">Masukan</option>
+      </select>
+      <select id="fk" title="Filter berdasarkan saluran asal">
+        <option value="">Semua kanal</option>
+        <option value="Dine-in">Dine-in</option>
+        <option value="WhatsApp">WhatsApp</option>
+        <option value="Google Maps">Google Maps</option>
+        <option value="Instagram">Instagram</option>
+      </select>
+    </div>
+
+    <div class="toolbar-group">
+      <button type="button" class="btn" id="btn-add">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Tambah Pelanggan
+      </button>
+      <a class="btn g" id="btn-csv" href="/api/pelanggan/export/csv" download="data_pelanggan_samaran.csv">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Unduh CSV
+      </a>
+      <button type="button" class="btn g" id="btn-rst" title="Kembalikan 20 data master samaran awal">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        Reset Data Demo
+      </button>
+    </div>
+  </div>
+
+  <!-- Pelanggan Table -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 70px;">ID</th>
+          <th>Nama Pelanggan</th>
+          <th>Nomor WhatsApp</th>
+          <th>Asal Kanal</th>
+          <th>Segmen</th>
+          <th>Label WhatsApp</th>
+          <th style="text-align: center;">Opt-In</th>
+          <th>Pesanan Terakhir</th>
+          <th style="text-align: right; min-width: 130px;">Tindakan</th>
+        </tr>
+      </thead>
+      <tbody id="pelanggan-tbody">
+        <tr>
+          <td colspan="9" style="text-align: center; padding: 32px; color: var(--mu);">
+            Memuat data pelanggan dari basis data MySQL...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

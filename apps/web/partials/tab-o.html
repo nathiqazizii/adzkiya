@@ -1,0 +1,59 @@
+<!-- TAB 2: PESANAN & ANTREAN DAPUR (KDS & ORDERING) -->
+<section id="tab-o" class="tab-pane" aria-labelledby="nav-tab-o">
+  <!-- Kitchen Display Status Strip -->
+  <div class="toolbar" style="margin-bottom: 20px;">
+    <div class="toolbar-group">
+      <span style="font-weight: 700; font-size: 14px; color: var(--tx); display: flex; align-items: center; gap: 8px;">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+        Tiket Antrean Dapur &amp; Kasir Real-Time
+      </span>
+      <span class="tag amber" id="badge-antrean-menunggu">Menunggu: 3</span>
+      <span class="tag primary" id="badge-antrean-dimasak">Dimasak: 3</span>
+      <span class="tag green" id="badge-antrean-siap">Siap Saji: 2</span>
+    </div>
+    <div class="toolbar-group">
+      <button type="button" class="btn" id="btn-open-order-modal">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Catat Pesanan Baru
+      </button>
+      <button type="button" class="btn g" id="btn-refresh-orders" title="Muat ulang antrean">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        Segarkan
+      </button>
+    </div>
+  </div>
+
+  <!-- Kitchen Order Cards (KDS Board) -->
+  <h2 style="font-size: 14px; font-weight: 700; color: var(--tx); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Papan Antrean Dapur Aktif (Kitchen Display System)
+  </h2>
+  <div class="kitchen-board" id="kitchen-board">
+    <!-- Live Kitchen Cards populated by JS -->
+  </div>
+
+  <!-- Riwayat Pesanan Lengkap Table -->
+  <h2 style="font-size: 14px; font-weight: 700; color: var(--tx); margin-top: 32px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    Log Semua Transaksi Pesanan Kasir
+  </h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 70px;">ID</th>
+          <th>Waktu Transaksi</th>
+          <th>Nama Pelanggan</th>
+          <th>Saluran Pesan</th>
+          <th>Menu Pilihan</th>
+          <th style="text-align: right;">Total Nominal</th>
+          <th style="text-align: center;">Status</th>
+          <th style="text-align: right;">Tindakan</th>
+        </tr>
+      </thead>
+      <tbody id="pesanan-tbody">
+        <tr><td colspan="8" style="text-align:center; padding: 24px; color: var(--mu);">Memuat riwayat pesanan...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>

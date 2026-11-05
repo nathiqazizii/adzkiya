@@ -1,0 +1,121 @@
+<!-- TAB 3: MASUKAN & KELUHAN (SLA & TICKETING) -->
+<section id="tab-m" class="tab-pane" aria-labelledby="nav-tab-m">
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <span>Keluhan Baru (Unresolved)</span>
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="kpi-val" id="cnt-m-baru">1</div>
+      <div class="kpi-sub"><span class="kpi-badge wr">Menunggu Tindakan</span> Perlu segera direspons</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <span>Sedang Diproses</span>
+        <svg class="icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      </div>
+      <div class="kpi-val" id="cnt-m-diproses">1</div>
+      <div class="kpi-sub">Dalam investigasi PIC operasional</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <span>Selesai Dituntaskan</span>
+        <svg class="icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="kpi-val" id="cnt-m-selesai">2</div>
+      <div class="kpi-sub"><span class="kpi-badge ok">SLA Tercapai</span> Solusi telah dikirim ke pelanggan</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <span>Kepatuhan SLA (&lt; 2 Jam)</span>
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+      </div>
+      <div class="kpi-val">100%</div>
+      <div class="kpi-sub"><span class="kpi-badge ok">Target 100%</span> Rata-rata respons 18 menit</div>
+    </div>
+  </div>
+
+  <!-- Quick Add Masukan Panel -->
+  <div class="panel-card" style="margin-bottom: 24px;">
+    <h2 class="panel-title">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Catat Masukan atau Keluhan Baru
+    </h2>
+    <p class="panel-desc">Sistem otomatis menetapkan PIC dan memulai penghitungan batas waktu SLA penyelesaian.</p>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="mp">Pelanggan Pengirim</label>
+        <select id="mp">
+          <!-- Loaded via JS -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mk">Kanal Masukan</label>
+        <select id="mk">
+          <option value="WhatsApp">WhatsApp</option>
+          <option value="Google Maps">Google Maps (Review)</option>
+          <option value="Dine-in">Dine-in (Langsung)</option>
+          <option value="Instagram">Instagram</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="mt">Kategori Keluhan</label>
+        <select id="mt">
+          <option value="Waktu tunggu">Waktu tunggu (Antrean lama)</option>
+          <option value="Bahan habis">Bahan habis (Stok kosong)</option>
+          <option value="Kebersihan">Kebersihan (Alat / Meja)</option>
+          <option value="Kualitas Rasa">Kualitas Rasa / Kematangan Masakan</option>
+          <option value="Tempat/fasilitas">Tempat / Fasilitas (Panas, colokan, kursi)</option>
+          <option value="Pelayanan">Pelayanan Karyawan</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mc">Penanggung Jawab (PIC)</label>
+        <select id="mc">
+          <option value="Admin">Admin (Rina - Customer Support)</option>
+          <option value="Pemilik">Pemilik (Pak Budi - Owner)</option>
+          <option value="Koki">Koki (Mas Eko - Dapur Utama)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mi">Rincian Keluhan / Saran Pelanggan</label>
+      <textarea id="mi" rows="3" placeholder="Tuliskan secara objektif detail keluhan pelanggan agar tim dapat menindaklanjuti..."></textarea>
+    </div>
+
+    <div style="display:flex; justify-content: flex-end;">
+      <button type="button" class="btn" id="btn-save-m">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Simpan &amp; Tetapkan SLA
+      </button>
+    </div>
+  </div>
+
+  <!-- Masukan Table -->
+  <h2 style="font-size: 14px; font-weight: 700; color: var(--tx); margin-bottom: 12px;">Daftar Tiket Keluhan &amp; Pelacakan SLA</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 70px;">ID</th>
+          <th>Pelanggan</th>
+          <th>Kanal</th>
+          <th>Kategori Masalah</th>
+          <th>Uraian Keluhan</th>
+          <th>PIC</th>
+          <th>Waktu Masuk</th>
+          <th>Status</th>
+          <th style="text-align: right;">Aksi SLA</th>
+        </tr>
+      </thead>
+      <tbody id="masukan-tbody">
+        <tr><td colspan="9" style="text-align:center; padding: 24px; color: var(--mu);">Memuat data tiket keluhan...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
